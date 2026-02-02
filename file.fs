@@ -4,10 +4,6 @@ type Producto = {
     Precio: decimal
 }
 
-type Descuento =
-    | Porcentaje of decimal
-    | ValorFijo of decimal
-    | SinDescuento
 
 // 2. Función para calcular el precio final usando Pattern Matching
 let calcularPrecioFinal producto descuento =
