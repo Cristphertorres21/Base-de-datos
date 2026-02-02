@@ -1,7 +1,7 @@
 // 1. Definimos los tipos de datos (Modelado de dominio)
 type Producto = {
     Nombre: string
-    Precio: decimal
+    Precio: deal
 }
 
 
