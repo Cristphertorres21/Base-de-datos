@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QmWGeofMwJE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\omar.montano\\Downloads\\T43A\\T43A.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\omar.montano\\.nuget\\packages\\fsharp.core\\8.0.403\\fsharp.core.8.0.403.nupkg.sha512"
+  ],
+  "logs": []
+}

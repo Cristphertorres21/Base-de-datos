@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    
+  </ItemGroup>
+
+<ItemGroup></ItemGroup><ItemGroup><Compile Include="..\k\Busqueda.fs" /><Compile Include="..\k\Puzzle8.fs" /><Compile Include="Astar.fs" /><Compile Include="..\k\Pila.fs" /><Compile Include="Greedy.fs" /><Compile Include="..\k\DFSL.fs" /><Compile Include="..\k\DFS.fs" /><Compile Include="..\k\CostoUniforme.fs" /><Compile Include="IDFSL.fs" /><Compile Include="..\k\Cola.fs" /><Compile Include="..\k\BFS.fs" /><Compile Include="Program.fs" /></ItemGroup></Project>
