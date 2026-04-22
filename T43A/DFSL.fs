@@ -12,4 +12,6 @@ module DFSL =
                     then push pila n
                     else pila
         }
+
+    let key n = n.estado, n.profundidad
     

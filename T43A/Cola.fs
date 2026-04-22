@@ -1,13 +1,16 @@
 namespace Busqueda
 
 module Cola =
-    let empty = []
-    let enqueue cola x =
-        x :: cola
+    // Frente, Trasera
+    let empty = [], []
+    let enqueue (frente, atras) x =
+        (frente, x :: atras)
 
-    let dequeue cola =
-        match List.tryLast cola with
-        | None -> None
-        | Some x -> Some (x, List.take (List.length cola - 1) 
-                                cola)
+    let rec dequeue (frente, atras) =
+        match frente, atras with
+        | x :: frente, atras -> Some (x, (frente, atras))
+        | [], x :: atras -> 
+            dequeue (List.rev (x::atras), [])
+        | [], [] -> None
+
 

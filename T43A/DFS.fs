@@ -8,4 +8,6 @@ module DFS =
             sacar = pop
             agregar = push
         }
+
+    let key n = n.estado
     

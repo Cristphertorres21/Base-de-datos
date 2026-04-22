@@ -63,3 +63,69 @@ module Capitulo3 =
         |> estrategia.agregar estrategia.vacia
         |> loop
 
+
+    let busquedaGrafo estrategia key problema =
+        let rec loop (procesados, bolsa) =
+            match estrategia.sacar bolsa with
+            | None -> None
+            | Some (n, bolsa) -> 
+                if problema.meta n.estado
+                then Some n
+                else 
+                    if Set.contains (key n) procesados
+                    then loop (procesados, bolsa)
+                    else
+                        expand problema n
+                        |> List.fold estrategia.agregar bolsa
+                        |> (fun bolsa ->
+                                let procesados = Set.add (key n) procesados
+                                loop (procesados, bolsa))
+        construir_nodo problema
+        |> estrategia.agregar estrategia.vacia
+        |> (fun bolsa -> loop (Set.empty, bolsa))
+
+    let rec acciones n =
+        match n.padre, n.accion with
+        | Some p, Some a ->
+            acciones p @ [a]
+        | _ -> []
+
+
+module Capitulo4 =
+    open Capitulo3
+
+    let ascensionColinas h problema =
+        let current = construir_nodo problema
+        let rec loop current =
+            let neighbor = 
+                expand problema current
+                |> List.maxBy h
+            if h neighbor <= h current
+            then Some current
+            else loop neighbor
+        loop current
+
+    let temperatura k lam iteraciones t =
+        if t < iteraciones
+        then k * System.Math.Exp (-lam*t)
+        else 0.0
+
+    let recocidoSimulado schedule h problema =
+        let rnd = System.Random()
+        let current = construir_nodo problema
+        let rec loop (t, current) =
+            let T = schedule t
+            if T = 0.0
+            then if problema.meta current.estado
+                 then Some current
+                 else None
+            else 
+                let succs = 
+                    expand problema current
+                let next = succs.[rnd.Next succs.Length]
+                let deltaE = h next - h current
+                if deltaE > 0.0 ||
+                   rnd.NextDouble() <= System.Math.Exp (deltaE / T)
+                then loop (t + 1.0, next)
+                else loop (t + 1.0, current)
+        loop (0.0, current)

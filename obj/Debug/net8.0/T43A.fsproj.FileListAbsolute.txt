@@ -27,3 +27,4 @@ C:\users\178666\Desktop\T43A\obj\Debug\net8.0\refint\T43A.dll
 C:\users\178666\Desktop\T43A\obj\Debug\net8.0\T43A.pdb
 C:\users\178666\Desktop\T43A\obj\Debug\net8.0\T43A.genruntimeconfig.cache
 C:\users\178666\Desktop\T43A\obj\Debug\net8.0\ref\T43A.dll
+C:\Users\178666\Desktop\T43A\obj\Debug\net8.0\T43A.sourcelink.json

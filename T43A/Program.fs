@@ -1,12 +1,15 @@
 ﻿open Busqueda
 
-match Capitulo3.busquedaGrafo
-        BFS.estrategia 
-        BFS.key
-        (Puzle8.problema Puzle8.estado_inicial_x) with
-| Some r -> 
-    let acciones = Capitulo3.acciones r
-    printfn "Solución %A" acciones
-    printfn "Profundidad: %A" (List.length acciones)
-| None -> 
-    printfn "No se encontró la solución"
+//printfn "%A" (NReinas.aptitud [|2; 2; 2; 2; 2; 2; 2; 2|])
+
+let rnd = System.Random()
+match Capitulo4.recocidoSimulado
+        (Capitulo4.temperatura 100.0 0.001 8000)
+        (fun n -> -NReinas.aptitud' n)
+        (NReinas.problema rnd 20)
+        with
+| Some n -> 
+    printfn "Solución potancial: %A" n.estado
+    printfn "Meta: %A" (NReinas.meta n.estado)
+    printfn "Pares atacando: %A" (NReinas.aptitud n.estado)
+| None -> printfn "No hay solución"

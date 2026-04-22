@@ -1,7 +1,7 @@
 namespace Busqueda
 
-module CostoUniforme =
-    let estrategia =
+module AStar =
+    let estrategia h =
         {
             vacia = Map.empty
             sacar = 
@@ -12,9 +12,9 @@ module CostoUniforme =
                                       Map.remove k m)
                     | None -> None
             agregar = 
-                fun mapa n -> Map.add (n.costo_ruta, n.estado)
+                fun mapa n -> Map.add (n.costo_ruta + h n, n.estado)
                                       n mapa
         }
 
-    let key n = n.estado, n.costo_ruta
+    let key h n = n.estado, n.costo_ruta + h n
     

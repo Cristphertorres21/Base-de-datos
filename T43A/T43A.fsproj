@@ -7,7 +7,7 @@
 
   <ItemGroup><Compile Include="Pila.fs" />
     <Compile Include="Cola.fs" />
-    <Compile Include="Busqueda.fs" /><Compile Include="DFSL.fs" /><Compile Include="CostoUniforme.fs" /><Compile Include="DFS.fs" />
+    <Compile Include="Busqueda.fs" /><Compile Include="NReinas.fs" /><Compile Include="AStar.fs" /><Compile Include="Greedy.fs" /><Compile Include="DFSL.fs" /><Compile Include="IDFSL.fs" /><Compile Include="CostoUniforme.fs" /><Compile Include="DFS.fs" />
     <Compile Include="BFS.fs" />
     <Compile Include="Puzzle8.fs" /><Compile Include="Program.fs" />
   </ItemGroup>

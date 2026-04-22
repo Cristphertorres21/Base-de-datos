@@ -8,4 +8,6 @@ module BFS =
             sacar = dequeue
             agregar = enqueue
         }
+
+    let key n = n.estado
     
