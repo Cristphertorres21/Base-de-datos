@@ -9,4 +9,4 @@
     
   </ItemGroup>
 
-<ItemGroup></ItemGroup><ItemGroup><Compile Include="..\k\Busqueda.fs" /><Compile Include="..\k\Puzzle8.fs" /><Compile Include="Astar.fs" /><Compile Include="..\k\Pila.fs" /><Compile Include="Greedy.fs" /><Compile Include="..\k\DFSL.fs" /><Compile Include="..\k\DFS.fs" /><Compile Include="..\k\CostoUniforme.fs" /><Compile Include="IDFSL.fs" /><Compile Include="..\k\Cola.fs" /><Compile Include="..\k\BFS.fs" /><Compile Include="Program.fs" /></ItemGroup></Project>
+<ItemGroup></ItemGroup><ItemGroup></ItemGroup><ItemGroup><Compile Include="T43A\Busqueda.fs" /><Compile Include="T43A\NReinas.fs" /><Compile Include="T43A\CSP.fs" /><Compile Include="T43A\Puzzle8.fs" /><Compile Include="T43A\Program.fs" /><Compile Include="T43A\Pila.fs" /><Compile Include="T43A\Greedy.fs" /><Compile Include="T43A\DFSL.fs" /><Compile Include="T43A\DFS.fs" /><Compile Include="T43A\CostoUniforme.fs" /><Compile Include="T43A\Cola.fs" /><Compile Include="T43A\BFS.fs" /><Compile Include="T43A\AStar.fs" /></ItemGroup></Project>

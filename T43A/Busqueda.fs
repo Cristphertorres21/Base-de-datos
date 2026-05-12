@@ -105,9 +105,10 @@ module Capitulo4 =
             else loop neighbor
         loop current
 
-    let temperatura k lam iteraciones t =
-        if t < iteraciones
-        then k * System.Math.Exp (-lam*t)
+    let temperatura k lam t =
+        let T = k * System.Math.Exp (-lam*t)
+        if T >= 0.1
+        then T//k * System.Math.Exp (-lam*t)
         else 0.0
 
     let recocidoSimulado schedule h problema =

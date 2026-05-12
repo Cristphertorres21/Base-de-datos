@@ -59,3 +59,26 @@ module NReinas =
             costo = costo
         }
 
+    let csp n =
+        let variables = [0 .. n - 1]
+        let dominio = [0 .. n - 1]
+        let restricciones = 
+            let pares = List.allPairs variables variables
+                        |> List.filter (fun (v1,v2) -> v1 <> v2)
+                        |> List.distinctBy (fun (v1,v2) -> if v1 <= v2
+                                                           then (v1,v2)
+                                                           else (v2,v1))
+            List.map (fun (v1, v2) -> 
+                    let f (estado:CSP.estado<int,int>) =
+                        let dom1 = Map.find v1 estado
+                        let dom2 = Map.find v2 estado
+                        let l1 = List.length dom1
+                        let l2 = List.length dom2
+                        (l1 > 0 && l2 > 0) &&
+                        (l1 > 1 || l2 > 1 ||
+                         not (atacan ((v1,dom1.[0]), (v2,dom2.[0]))))
+                    CSP.Binaria ((v1, v2), f)) pares
+        {CSP.variables = variables
+         CSP.dominios  = [for _ in 1 .. n do yield dominio]
+         CSP.restricciones = restricciones}
+
