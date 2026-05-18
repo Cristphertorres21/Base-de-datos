@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("T43A")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f6921773f7e3ee98b209cee869ffaad875fccaf")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6b9ed16fde1917357100a6857d4fb5a3901543c")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("T43A")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("T43A")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]
