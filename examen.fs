@@ -426,3 +426,4 @@ let viajar (inicioCiudad: string) : string list =
     | Some nodoFinal -> reconstruirCamino nodoFinal
     | None -> []
 
+ // Etsamwn pasado
