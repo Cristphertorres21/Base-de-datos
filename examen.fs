@@ -493,5 +493,55 @@ module CuadradoLatino =
 
         | None -> []
 
+// intento 2
+let cuadradoLatino () : ((int * int) * int) list =
+    open CSP
+
+    // 1. Definir las variables: Coordenadas (fila, columna) de 0 a 2
+    let variables = [ for r in 0 .. 2 do for c in 0 .. 2 -> (r, c) ]
+
+    // 2. Definir los dominios: Cada celda puede tener los valores [1; 2; 3]
+    let dominios = List.init (variables.Length) (fun _ -> [1; 2; 3])
+
+    // 3. Definir las restricciones de unicidad en filas y columnas
+    let generarRestricciones vars =
+        [
+            for i in 0 .. vars.Length - 1 do
+                for j in i + 1 .. vars.Length - 1 do
+                    let (r1, c1) = vars.[i]
+                    let (r2, c2) = vars.[j]
+                    
+                    // Si están en la misma fila o en la misma columna, deben ser diferentes
+                    if r1 = r2 || c1 = c2 then
+                        let validacion (estado: estado<int * int, int>) =
+                            // Obtenemos las listas de valores asignados en el estado actual
+                            let v1 = Map.find (r1, c1) estado
+                            let v2 = Map.find (r2, c2) estado
+                            
+                            // Durante la búsqueda con AC3/Forward Checking, los dominios se van reduciendo.
+                            // La restricción solo se viola si ambos ya tienen un único valor asignado y es el mismo.
+                            match v1, v2 with
+                            | [val1], [val2] -> val1 <> val2
+                            | _ -> true // Si aún tienen múltiples opciones disponibles, asumimos válido por ahora
+                        
+                        yield Binaria (((r1, c1), (r2, c2)), validacion)
+        ]
+
+    // 4. Instanciar la estructura CSP
+    let cspLatino = {
+        variables = variables
+        dominios = dominios
+        restricciones = generarRestricciones variables
+    }
+
+    // 5. Ejecutar tu algoritmo de Backtracking
+    match backtracking cspLatino with
+    | Some estadoFinal ->
+        // Convertimos el mapa de resultados 'Map<(int*int), int list>' al formato requerido '((int*int)*int) list'
+        estadoFinal
+        |> Map.toList
+        |> List.map (fun (coordenada, listaValor) -> (coordenada, List.head listaValor))
+    | None -> []
+
 
 // si hay error copiamelos
