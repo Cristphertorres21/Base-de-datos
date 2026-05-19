@@ -427,3 +427,10 @@ let viajar (inicioCiudad: string) : string list =
     | None -> []
 
  // Etsamwn pasado
+ Un cuadrado latino de 3x3 es una cuadrícula donde cada fila y cada columna contiene los números 1, 2, 3 exactamente una vez.
+
+Variables: Coordenadas (0,0) a (2,2).
+Dominio: 1, 2, 3.
+Restricciones: Filas y Columnas únicas.
+
+Implemente cuadradoLatino : unit -> ((int*int)*int) list usando backtracking.
