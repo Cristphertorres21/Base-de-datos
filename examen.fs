@@ -492,3 +492,6 @@ module CuadradoLatino =
                 (coord, List.head valor))
 
         | None -> []
+
+
+// si hay error copiamelos
