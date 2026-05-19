@@ -434,3 +434,61 @@ Dominio: 1, 2, 3.
 Restricciones: Filas y Columnas únicas.
 
 Implemente cuadradoLatino : unit -> ((int*int)*int) list usando backtracking.
+
+namespace Busqueda
+
+module CuadradoLatino =
+
+    let cuadradoLatino () : ((int*int)*int) list =
+
+        // Variables del tablero 3x3
+        let variables =
+            [ for i in 0..2 do
+                for j in 0..2 do
+                    yield (i,j) ]
+
+        // Dominios posibles para cada variable
+        let dominios =
+            [ for _ in variables -> [1;2;3] ]
+
+        // Restricciones:
+        // Cada fila y columna debe contener números distintos
+        let restricciones =
+            [
+                for (i1,j1) in variables do
+                    for (i2,j2) in variables do
+
+                        if (i1,j1) < (i2,j2) &&
+                           (i1 = i2 || j1 = j2) then
+
+                            yield CSP.Binaria(
+                                (((i1,j1),(i2,j2)),
+                                fun estado ->
+
+                                    let dom1 = Map.find (i1,j1) estado
+                                    let dom2 = Map.find (i2,j2) estado
+
+                                    match dom1, dom2 with
+                                    | [v1], [v2] -> v1 <> v2
+                                    | _ -> true)
+                            )
+            ]
+
+        // Construcción del CSP
+        let problema =
+            {
+                CSP.variables = variables
+                dominios = dominios
+                restricciones = restricciones
+            }
+
+        // Resolver con backtracking
+        match CSP.backtracking problema with
+        | Some nodo ->
+            
+            nodo.estado
+            |> Map.toList
+            |> List.map (fun (coord, valor) ->
+                (coord, List.head valor))
+
+        | None -> []
