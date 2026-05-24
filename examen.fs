@@ -426,7 +426,7 @@ let viajar (inicioCiudad: string) : string list =
     | Some nodoFinal -> reconstruirCamino nodoFinal
     | None -> []
 
- // Etsamwn pasado
+ // EXAMEN 
  Un cuadrado latino de 3x3 es una cuadrícula donde cada fila y cada columna contiene los números 1, 2, 3 exactamente una vez.
 
 Variables: Coordenadas (0,0) a (2,2).
