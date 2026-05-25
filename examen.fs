@@ -544,4 +544,4 @@ let cuadradoLatino () : ((int * int) * int) list =
     | None -> []
 
 
-// si hay error copiamelos
+// gregrtg
