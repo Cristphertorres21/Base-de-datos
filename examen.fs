@@ -545,3 +545,4 @@ let cuadradoLatino () : ((int * int) * int) list =
 
 
 // erfe33333
+// como vamos??
